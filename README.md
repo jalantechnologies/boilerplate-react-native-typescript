@@ -3,13 +3,13 @@ Typescript support React Native Boilerplate
 
 ### Future Plans
 
-- [x] Declarative config: The application should allow the ability to declaratively define application configuration using JSON or YAML for dev, test, staging, production environments.
-- [x] Localization Support: It should be easy to localize the application
-- [x] Responsive Grid System
-- [x] Base component library with easy to extend
-- [x] Forms
-- [x] Crash Monitoring:
-- [x] End to end Test
-- [x] Component and unit testing
-- [x] Context hook for Authentication of user
-- [x] Adding login logout functionality, it should be easy to remove if not required.
+- [ ] Declarative config: The application should allow the ability to declaratively define application configuration using JSON or YAML for dev, test, staging, production environments.
+- [ ] Localization Support: It should be easy to localize the application
+- [ ] Responsive Grid System
+- [ ] Base component library with easy to extend
+- [ ] Forms
+- [ ] Crash Monitoring:
+- [ ] End to end Test
+- [ ] Component and unit testing
+- [ ] Context hook for Authentication of user
+- [ ] Adding login logout functionality, it should be easy to remove if not required.
