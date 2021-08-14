@@ -9,6 +9,9 @@
     "test": "jest",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
   },
+  "engines" : {
+    "node" : "12.13.0"
+  },
   "dependencies": {
     "react": "17.0.1",
     "react-native": "0.64.1"
