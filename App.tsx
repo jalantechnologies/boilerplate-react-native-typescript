@@ -9,6 +9,7 @@
  */
 
  import React from 'react';
+ import Config from "react-native-config";
  import {
    SafeAreaView,
    ScrollView,
@@ -40,7 +41,7 @@
              color: isDarkMode ? Colors.white : Colors.black,
            },
          ]}>
-         {title}
+         {Config.API_URL}
        </Text>
        <Text
          style={[
