@@ -41,7 +41,7 @@
              color: isDarkMode ? Colors.white : Colors.black,
            },
          ]}>
-         {Config.API_URL} "asdasdasd"
+         {Config.API_URL}
        </Text>
        <Text
          style={[
