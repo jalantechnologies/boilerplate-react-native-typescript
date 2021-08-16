@@ -1,5 +1,5 @@
-import React, { useEffect, FC } from "react"
-import { FlatList, TextStyle, View, ViewStyle, ImageStyle } from "react-native"
+import React, { FC } from "react"
+import { TextStyle, View, ViewStyle, ImageStyle } from "react-native"
 import { StackScreenProps } from "@react-navigation/stack"
 import { Header, Screen, Text, AutoImage as Image, GradientBackground } from "../../components"
 import { color, spacing } from "../../theme"
@@ -40,20 +40,9 @@ const FLAT_LIST: ViewStyle = {
   paddingHorizontal: spacing[4],
 }
 
-export const DemoListScreen: FC<StackScreenProps<NavigatorParamList, "demoList">> = observer(
+export const DemoListScreen: FC<StackScreenProps<NavigatorParamList, "demoList">> = 
   ({ navigation }) => {
     const goBack = () => navigation.goBack()
-
-    const { characterStore } = useStores()
-    const { characters } = characterStore
-
-    useEffect(() => {
-      async function fetchData() {
-        await characterStore.getCharacters()
-      }
-
-      fetchData()
-    }, [])
 
     return (
       <View testID="DemoListScreen" style={FULL}>
@@ -66,22 +55,7 @@ export const DemoListScreen: FC<StackScreenProps<NavigatorParamList, "demoList">
             style={HEADER}
             titleStyle={HEADER_TITLE}
           />
-          <FlatList
-            contentContainerStyle={FLAT_LIST}
-            data={[...characters]}
-            keyExtractor={(item) => String(item.id)}
-            renderItem={({ item }) => (
-              <View style={LIST_CONTAINER}>
-                <Image source={{ uri: item.image }} style={IMAGE} />
-                <Text style={LIST_TEXT}>
-                  {item.name} ({item.status})
-                </Text>
-              </View>
-            )}
-          />
         </Screen>
       </View>
     )
-  },
-)
-
+  }

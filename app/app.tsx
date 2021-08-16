@@ -30,8 +30,6 @@ export const NAVIGATION_PERSISTENCE_KEY = "NAVIGATION_STATE"
  * This is the root component of our app.
  */
 function App() {
-  const [rootStore, setRootStore] = useState<RootStore | undefined>(undefined)
-
   useBackButtonHandler(canExit)
   const {
     initialNavigationState,
@@ -42,8 +40,7 @@ function App() {
   // Kick off initial async loading actions, like loading fonts and RootStore
   useEffect(() => {
     ;(async () => {
-      await initFonts() // expo
-      setupRootStore().then(setRootStore)
+      await initFonts() 
     })()
   }, [])
 
@@ -53,7 +50,7 @@ function App() {
   // In iOS: application:didFinishLaunchingWithOptions:
   // In Android: https://stackoverflow.com/a/45838109/204044
   // You can replace with your own loading component if you wish.
-  if (!rootStore || !isNavigationStateRestored) return null
+  if (!isNavigationStateRestored) return null
 
   // otherwise, we're ready to render the app
   return (

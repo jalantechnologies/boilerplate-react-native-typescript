@@ -123,5 +123,4 @@ export const DemoScreen: FC<StackScreenProps<NavigatorParamList, "demo">> =
         </Screen>
       </View>
     )
-  },
-
+  }

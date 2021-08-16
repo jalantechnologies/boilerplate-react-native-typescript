@@ -79,13 +79,12 @@ export function useNavigationPersistence(storage: any, persistenceKey: string) {
 
   const routeNameRef = useRef<string | undefined>()
 
-  const onNavigationStateChange = (state) => {
+  const onNavigationStateChange = (state: any) => {
     const previousRouteName = routeNameRef.current
     const currentRouteName = getActiveRouteName(state)
 
     if (previousRouteName !== currentRouteName) {
       // track screens.
-      __DEV__ && console.tron.log(currentRouteName)
     }
 
     // Save the current route name for later comparision
