@@ -25,6 +25,11 @@ export type NavigatorParamList = {
   demoList: undefined
 }
 
+export type AuthStackParamList = {
+  Login: undefined,
+  Register: undefined
+}
+
 // Documentation: https://reactnavigation.org/docs/stack-navigator/
 const Stack = createNativeStackNavigator<NavigatorParamList>()
 

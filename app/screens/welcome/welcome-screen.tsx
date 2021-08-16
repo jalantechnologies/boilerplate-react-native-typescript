@@ -6,7 +6,6 @@ import {
   Header,
   Screen,
   Text,
-  GradientBackground,
   AutoImage as Image,
 } from "../../components"
 import { color, spacing, typography } from "../../theme"
