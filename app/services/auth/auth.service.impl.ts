@@ -1,5 +1,5 @@
 
-import { AccessToken } from '@models';
+import { AccessToken } from '../../models';
 import {APIServiceImpl, ServiceResponse} from '../api';
 
 import {AuthService} from './auth.service';
@@ -18,11 +18,11 @@ export default class AuthServiceImpl extends APIServiceImpl implements AuthServi
   }
 
   logout(): void {
-    localStorage.removeItem('login');
+   // localStorage.removeItem('login');
   }
 
   isLoggedIn(): boolean {
     // will return true if login key has value 'true'
-    return localStorage.getItem('login') === 'true';
+    return true //localStorage.getItem('login') === 'true';
   }
 }

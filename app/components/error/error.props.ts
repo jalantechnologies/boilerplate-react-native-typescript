@@ -7,6 +7,6 @@ export interface ErrorProps extends TextProperties {
   children?: React.ReactNode
   tx?: TxKeyPath
   txOptions?: i18n.TranslateOptions
-  error?: FormikErrors<{ email: string; password: string; }>
+  error?: string
   style?: StyleProp<TextStyle>
 }

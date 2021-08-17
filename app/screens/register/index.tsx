@@ -1,6 +1,5 @@
 import React from 'react';
 
-import { AuthContext } from '../contexts/AuthContext';
 import { styles } from './style';
 import { FC } from 'react';
 import { StackScreenProps } from '@react-navigation/stack';
@@ -22,8 +21,7 @@ const reviewRegisterSchema = yup.object({
     .min(8),
 });
 
-export const RegisterScreen: FC<StackScreenProps<AuthStackParamList, "Register">> = ({ navigation }) => {
-  const { register } = React.useContext(AuthContext);
+export const RegisterScreen: FC<StackScreenProps<AuthStackParamList, "register">> = ({ navigation }) => {
   const [loading, setLoading] = React.useState(false);
 
   return (
@@ -43,7 +41,7 @@ export const RegisterScreen: FC<StackScreenProps<AuthStackParamList, "Register">
           actions.resetForm();
           try {
             setLoading(true);
-            await register(email, password);
+          //  await register(values.email, values.password);
           } catch (e) {
             setLoading(false);
           }
@@ -70,7 +68,8 @@ export const RegisterScreen: FC<StackScreenProps<AuthStackParamList, "Register">
               value={values.password}
               onChangeText={handleChange('password')}
             />
-      <Error error={errors} />
+      <Error error={errors.email} />
+      <Error error={errors.email} />
       <Button
         text={'Register'}
         style={styles.loginButton}

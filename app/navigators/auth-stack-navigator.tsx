@@ -1,29 +1,22 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 
-import {LoginScreen} from '../screens/login';
-import {RegisterScreen} from '../screens/register';
+import {LoginScreen} from '../screens';
+import {RegisterScreen} from '../screens';
+import { AuthStackParamList } from './stack-param-list';
 
-const AuthStack = createStackNavigator();
-const LoginStack = createStackNavigator();
+const AuthStack = createStackNavigator<AuthStackParamList>();
 
 export const AuthStackNavigator = () => {
   return (
     <AuthStack.Navigator
       screenOptions={{
         headerShown: false,
-      }}>
-      <AuthStack.Screen name={'LoginStack'}>
-        {() => (
-          <LoginStack.Navigator
-            screenOptions={{
-              headerShown: false,
-            }}>
-            <LoginStack.Screen name={'Login'} component={LoginScreen} />
-          </LoginStack.Navigator>
-        )}
-      </AuthStack.Screen>
-      <AuthStack.Screen name={'Registration'} component={RegisterScreen} />
+      }}
+      initialRouteName="login"
+    >
+      <AuthStack.Screen name={'login'} component={LoginScreen}/>
+      <AuthStack.Screen name={'register'} component={RegisterScreen} />
     </AuthStack.Navigator>
   );
 }

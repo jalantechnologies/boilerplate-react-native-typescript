@@ -1,18 +1,17 @@
 import axios, {AxiosInstance, AxiosResponse, AxiosRequestConfig, AxiosError} from 'axios';
 import * as _ from 'lodash';
 
-import Config from '@config';
 import {APIService} from './api.service';
 
 export class APIServiceImpl implements APIService {
   service: AxiosInstance
   constructor() {
     this.service = axios.create({
-      baseURL: Config.apiEndpoint,
+      baseURL: 'Config.apiEndpoint',
     });
     this.service.interceptors.request.use((request): AxiosRequestConfig => {
-      const accessToken = localStorage.getItem('accessToken');
-      request.headers.Authorization = accessToken ? `Bearer ${accessToken}` : '';
+      //const accessToken = localStorage.getItem('accessToken');
+      request.headers.Authorization = 'accessToken' ? `Bearer ${'accessToken'}` : '';
       return request;
     });
 

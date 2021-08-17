@@ -1,28 +1,17 @@
 import React, { FC } from 'react';
 
-import { AuthContext } from '../contexts/AuthContext';
-import { styles } from './login.style'
+import { styles } from './style'
 import { StackScreenProps } from '@react-navigation/stack';
 import { AuthStackParamList } from '../../navigators';
 import { View } from 'react-native';
 import { Button, Header, Text, TextField } from '../../components';
 import { Formik } from 'formik';
-import * as yup from 'yup';
+
 import { Error } from '../../components/error/error';
 import { Loader } from '../../components/loader/loader';
+import { validateLoginSchema } from '../../utils/validator';
 
-const reviewLoginSchema = yup.object({
-  email: yup.string()
-    .required()
-    .email()
-    .min(4),
-  password: yup.string()
-    .required()
-    .min(8),
-});
-
-export const LoginScreen: FC<StackScreenProps<AuthStackParamList, "Login">> = ({ navigation }) => {
-  const { login } = React.useContext(AuthContext);
+export const LoginScreen: FC<StackScreenProps<AuthStackParamList, "login">> = ({ navigation }) => {
   const [loading, setLoading] = React.useState(false);
 
   return (
@@ -33,19 +22,18 @@ export const LoginScreen: FC<StackScreenProps<AuthStackParamList, "Login">> = ({
 
       <Formik
         initialValues={{ email: '', password: '' }}
-        validationSchema={reviewLoginSchema}
+        validationSchema={validateLoginSchema}
         onSubmit={async (values: { email: string, password: string }, actions: { resetForm: () => void; }) => {
           actions.resetForm();
           try {
             setLoading(true);
-            await login(email, password);
+            //   await login(values.email, values.password);
           } catch (e) {
-            setError(e.message);
             setLoading(false);
           }
         }}>
 
-        {({ 
+        {({
           handleChange,
           handleSubmit,
           values,
@@ -66,7 +54,8 @@ export const LoginScreen: FC<StackScreenProps<AuthStackParamList, "Login">> = ({
               value={values.password}
               onChangeText={handleChange('password')}
             />
-          <Error error={errors} />
+            <Error error={errors.email} />
+            <Error error={errors.password} />
             <Button
               style={styles.loginButton}
               tx="demoScreen.demoList"
@@ -78,10 +67,9 @@ export const LoginScreen: FC<StackScreenProps<AuthStackParamList, "Login">> = ({
       <Button
         text={'Have u an account? Create one'}
         onPress={() => {
-          navigation.navigate('Register');
+          navigation.navigate('register');
         }}
       />
-
       <Loader loading={loading} />
     </View>
   );

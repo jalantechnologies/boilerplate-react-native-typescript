@@ -1,34 +1,12 @@
-/**
- * The app navigator (formerly "AppNavigator" and "MainNavigator") is used for the primary
- * navigation flows of your app.
- * Generally speaking, it will contain an auth flow (registration, login, forgot password)
- * and a "main" flow which the user will use once logged in.
- */
-import React from "react"
+import React, { useContext } from "react"
 import { useColorScheme } from "react-native"
 import { NavigationContainer, DefaultTheme, DarkTheme } from "@react-navigation/native"
 import { createNativeStackNavigator } from "@react-navigation/native-stack"
-import { WelcomeScreen, DemoScreen, DemoListScreen } from "../screens"
+import { WelcomeScreen, DemoScreen } from "../screens"
 import { navigationRef } from "./navigation-utilities"
-
-/**
- * This type allows TypeScript to know what routes are defined in this navigator
- * as well as what properties (if any) they might take when navigating to them.
- *
- * For more information, see this documentation:
- *   https://reactnavigation.org/docs/params/
- *   https://reactnavigation.org/docs/typescript#type-checking-the-navigator
- */
-export type NavigatorParamList = {
-  welcome: undefined
-  demo: undefined
-  demoList: undefined
-}
-
-export type AuthStackParamList = {
-  Login: undefined,
-  Register: undefined
-}
+import { NavigatorParamList } from "./stack-param-list"
+import { AccountContext, AccountContextProvider } from "../contexts/account-context"
+import { AuthStackNavigator } from "./auth-stack-navigator"
 
 // Documentation: https://reactnavigation.org/docs/stack-navigator/
 const Stack = createNativeStackNavigator<NavigatorParamList>()
@@ -43,23 +21,34 @@ const AppStack = () => {
     >
       <Stack.Screen name="welcome" component={WelcomeScreen} />
       <Stack.Screen name="demo" component={DemoScreen} />
-      <Stack.Screen name="demoList" component={DemoListScreen} />
     </Stack.Navigator>
   )
 }
 
-interface NavigationProps extends Partial<React.ComponentProps<typeof NavigationContainer>> {}
+interface NavigationProps extends Partial<React.ComponentProps<typeof NavigationContainer>> { }
 
 export const AppNavigator = (props: NavigationProps) => {
   const colorScheme = useColorScheme()
-  return (
-    <NavigationContainer
-      ref={navigationRef}
-      theme={colorScheme === "dark" ? DarkTheme : DefaultTheme}
-      {...props}
-    >
+  const accountContext = useContext(AccountContext);
+
+  function renderScreens() {
+    return accountContext && accountContext.isUserLoggedIn() ? (
       <AppStack />
-    </NavigationContainer>
+    ) : (
+      <AuthStackNavigator />
+    );
+  }
+
+  return (
+    <AccountContextProvider>
+      <NavigationContainer
+        ref={navigationRef}
+        theme={colorScheme === "dark" ? DarkTheme : DefaultTheme}
+        {...props}
+      >
+        {renderScreens()}
+      </NavigationContainer>
+    </AccountContextProvider>
   )
 }
 
