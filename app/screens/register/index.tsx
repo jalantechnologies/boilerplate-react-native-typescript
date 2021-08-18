@@ -3,13 +3,13 @@ import React from 'react';
 import { styles } from './style';
 import { FC } from 'react';
 import { StackScreenProps } from '@react-navigation/stack';
-import { AuthStackParamList } from '../../navigators';
+import { AuthStackParamList } from '@navigators';
 import { View } from 'react-native';
-import { Button, Header, TextField } from '../../components';
-import { Error } from '../../components/error/error';
-import { Loader } from '../../components/loader/loader';
+import { Button, Header, TextField } from '@components';
+import { Error } from '@components';
+import { Loader } from '@components';
 import { Formik } from 'formik';
-import { validateRegisterSchema } from '../../utils/validator';
+import { validateRegisterSchema } from '@utils';
 
 export const RegisterScreen: FC<StackScreenProps<AuthStackParamList, "register">> = ({ navigation }) => {
   const [loading, setLoading] = React.useState(false);

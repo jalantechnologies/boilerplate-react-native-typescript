@@ -7,11 +7,11 @@ import {
   Screen,
   Text,
   AutoImage as Image,
-} from "../../components"
-import { color, spacing, typography } from "../../theme"
-import { NavigatorParamList } from "../../navigators"
+} from "@components"
+import { color, spacing, typography } from "@theme"
+import { NavigatorParamList } from "@navigators"
 
-import { Images } from "../../../assets"
+import { Images } from "@assets"
 
 const FULL: ViewStyle = { flex: 1 }
 const CONTAINER: ViewStyle = {

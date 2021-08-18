@@ -8,10 +8,10 @@ import {
   Text,
   Screen,
   AutoImage as Image,
-} from "../../components"
-import { NavigatorParamList } from "../../navigators"
-import { color } from "../../theme"
-import { Images } from "../../../assets"
+} from "@components"
+import { NavigatorParamList } from "@navigators"
+import { color } from "@theme"
+import { Images } from "@assets"
 import { FULL, CONTAINER, HEADER, HEADER_TITLE, TITLE, TAGLINE, platformCommand, DEMO, DEMO_TEXT, LOGO } from "./style"
 
 

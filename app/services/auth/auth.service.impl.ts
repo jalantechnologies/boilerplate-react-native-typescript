@@ -1,5 +1,5 @@
 
-import { AccessToken } from '../../models';
+import { AccessToken } from '@models';
 import {APIServiceImpl, ServiceResponse} from '../api';
 
 import {AuthService} from './auth.service';

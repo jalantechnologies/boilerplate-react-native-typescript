@@ -1,5 +1,5 @@
 import { ImageStyle, Platform, TextStyle, ViewStyle } from "react-native";
-import { color, spacing } from "../../theme";
+import { color, spacing } from "@theme";
 
 export const FULL: ViewStyle = { flex: 1 }
 export const CONTAINER: ViewStyle = {

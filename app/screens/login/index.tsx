@@ -2,13 +2,13 @@ import React, { FC } from 'react';
 
 import { styles } from './style'
 import { StackScreenProps } from '@react-navigation/stack';
-import { AuthStackParamList } from '../../navigators';
+import { AuthStackParamList } from '@navigators';
 import { View } from 'react-native';
-import { Button, Header, TextField } from '../../components';
+import { Button, Header, TextField } from '@components';
 import { Formik } from 'formik';
 
-import { Error } from '../../components/error/error';
-import { Loader } from '../../components/loader/loader';
+import { Error } from '@components';
+import { Loader } from '@components';
 import { validateLoginSchema } from '../../utils/validator';
 
 export const LoginScreen: FC<StackScreenProps<AuthStackParamList, "login">> = ({ navigation }) => {
