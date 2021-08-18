@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 
 import {styles} from './style'
 import {FC} from 'react'
@@ -10,11 +10,19 @@ import {Error} from '@components'
 import {Loader} from '@components'
 import {Formik} from 'formik'
 import {validateRegisterSchema} from '@utils'
+import DIContext from '../../contexts/dependencies.context'
+import { AccountContext } from '../../contexts'
 
 export const RegisterScreen: FC<
   StackScreenProps<AuthStackParamList, 'register'>
 > = ({navigation}) => {
   const [loading, setLoading] = React.useState(false)
+
+  const { storeAccount } = useContext(AccountContext)
+
+  const dependencies = React.useContext(DIContext);
+
+  const { authService } = dependencies;
 
   return (
     <View style={styles.container}>
@@ -27,22 +35,38 @@ export const RegisterScreen: FC<
       />
       <Header headerTx={'registerScreen.title'} style={styles.title} />
       <Formik
-        initialValues={{email: '', password: ''}}
+        initialValues={{email: '', password: '', firstName: '', lastName: ''}}
         validationSchema={validateRegisterSchema}
         onSubmit={async (
-          values: {email: string; password: string},
+          values: {email: string; password: string; firstName: string; lastName: string},
           actions: {resetForm: () => void},
         ) => {
           actions.resetForm()
           try {
             setLoading(true)
-            //  await register(values.email, values.password);
+            const res = await authService.register({email:values.email, password: values.password, firstName: values.firstName, lastName: values.lastName});
+            if(res.data){
+              storeAccount({accountDetails: res.data})
+            }
+            setLoading(false)
           } catch (e) {
             setLoading(false)
           }
         }}>
         {({handleChange, handleSubmit, values, errors}) => (
           <View>
+            <TextField
+              style={styles.input}
+              placeholder={'First Name'}
+              value={values.firstName}
+              onChangeText={handleChange('firstName')}
+            />
+            <TextField
+              style={styles.input}
+              placeholder={'Last Name'}
+              value={values.lastName}
+              onChangeText={handleChange('lastName')}
+            />
             <TextField
               style={styles.input}
               placeholder={'Email'}

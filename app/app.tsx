@@ -11,12 +11,12 @@
  */
 import './i18n'
 import './utils/ignore-warnings'
-import React, {useEffect} from 'react'
+import React, { useEffect } from 'react'
 import {
   SafeAreaProvider,
   initialWindowMetrics,
 } from 'react-native-safe-area-context'
-import {initFonts} from './theme/fonts'
+import { initFonts } from './theme/fonts'
 import * as storage from './utils/storage'
 import {
   useBackButtonHandler,
@@ -28,7 +28,8 @@ import {
 // This puts screens in a native ViewController or Activity. If you want fully native
 // stack navigation, use `createNativeStackNavigator` in place of `createStackNavigator`:
 // https://github.com/kmagiera/react-native-screens#using-native-stack-navigator
-import {enableScreens} from 'react-native-screens'
+import { enableScreens } from 'react-native-screens'
+import { AccountContextProvider } from './contexts'
 enableScreens()
 
 export const NAVIGATION_PERSISTENCE_KEY = 'NAVIGATION_STATE'
@@ -63,12 +64,16 @@ function App() {
 
   // otherwise, we're ready to render the app
   return (
-    <SafeAreaProvider initialMetrics={initialWindowMetrics}>
-      <AppNavigator
-        initialState={initialNavigationState}
-        onStateChange={onNavigationStateChange}
-      />
-    </SafeAreaProvider>
+
+    <AccountContextProvider>
+      <SafeAreaProvider initialMetrics={initialWindowMetrics}>
+        <AppNavigator
+          initialState={initialNavigationState}
+          onStateChange={onNavigationStateChange}
+        />
+      </SafeAreaProvider>
+
+    </AccountContextProvider>
   )
 }
 

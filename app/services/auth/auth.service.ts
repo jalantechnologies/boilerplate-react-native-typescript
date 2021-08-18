@@ -1,8 +1,8 @@
-import {AccessToken} from '@models'
+import {Account} from '@models'
 import {ServiceResponse} from '../api'
 
 export interface AuthService {
   logout: () => void
-  isLoggedIn: () => boolean
-  login: (payload: any) => Promise<ServiceResponse<AccessToken>>
+  login: (payload: any) => Promise<ServiceResponse<Account>>
+  register: (payload: any) => Promise<ServiceResponse<Account>>
 }

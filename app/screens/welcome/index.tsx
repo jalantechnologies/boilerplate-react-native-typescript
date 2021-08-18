@@ -1,4 +1,4 @@
-import React, {FC} from 'react'
+import React, { FC } from 'react'
 import {
   View,
   ViewStyle,
@@ -6,14 +6,15 @@ import {
   ImageStyle,
   SafeAreaView,
 } from 'react-native'
-import {StackScreenProps} from '@react-navigation/stack'
-import {Button, Header, Screen, Text, AutoImage as Image} from '@components'
-import {color, spacing, typography} from '@theme'
-import {NavigatorParamList} from '@navigators'
+import { StackScreenProps } from '@react-navigation/stack'
+import { Button, Header, Screen, Text, AutoImage as Image } from '@components'
+import { color, spacing, typography } from '@theme'
+import { NavigatorParamList } from '@navigators'
 
-import {Images} from '@assets'
+import { Images } from '@assets'
+import { AccountContext } from '../../contexts'
 
-const FULL: ViewStyle = {flex: 1}
+const FULL: ViewStyle = { flex: 1 }
 const CONTAINER: ViewStyle = {
   backgroundColor: color.transparent,
   paddingHorizontal: spacing[4],
@@ -22,7 +23,7 @@ const TEXT: TextStyle = {
   color: color.palette.white,
   fontFamily: typography.primary,
 }
-const BOLD: TextStyle = {fontWeight: 'bold'}
+const BOLD: TextStyle = { fontWeight: 'bold' }
 const HEADER: TextStyle = {
   paddingTop: spacing[3],
   paddingBottom: spacing[4] + spacing[1],
@@ -78,7 +79,7 @@ const CONTINUE_TEXT: TextStyle = {
   fontSize: 13,
   letterSpacing: 2,
 }
-const FOOTER: ViewStyle = {backgroundColor: '#20162D'}
+const FOOTER: ViewStyle = { backgroundColor: '#20162D' }
 const FOOTER_CONTENT: ViewStyle = {
   paddingVertical: spacing[4],
   paddingHorizontal: spacing[4],
@@ -86,8 +87,12 @@ const FOOTER_CONTENT: ViewStyle = {
 
 export const WelcomeScreen: FC<
   StackScreenProps<NavigatorParamList, 'welcome'>
-> = ({navigation}) => {
-  const nextScreen = () => navigation.navigate('demo')
+> = ({ navigation }) => {
+  const { logout } = React.useContext(AccountContext);
+
+  const logoutUser = () => {
+    logout()
+  }
 
   return (
     <View testID="WelcomeScreen" style={FULL}>
@@ -119,8 +124,8 @@ export const WelcomeScreen: FC<
             testID="next-screen-button"
             style={CONTINUE}
             textStyle={CONTINUE_TEXT}
-            tx="welcomeScreen.continue"
-            onPress={nextScreen}
+            tx="welcomeScreen.logout"
+            onPress={logoutUser}
           />
         </View>
       </SafeAreaView>

@@ -10,7 +10,8 @@
   "welcomeScreen": {
     "poweredBy": "POWERED BY JTC",
     "readyForLaunch": "Ready for launch.",
-    "continue": "CONTINUE"
+    "continue": "CONTINUE",
+    "logout": "LOGOUT"
   },
   "demoScreen": {
     "howTo": "HOW TO",
