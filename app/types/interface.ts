@@ -4,6 +4,7 @@ export interface Account {
   id?: string
   lastName: string
   password?: string
+  token: string
 }
 
 export interface LooseObject {

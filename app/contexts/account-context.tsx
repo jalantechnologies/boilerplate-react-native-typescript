@@ -7,13 +7,12 @@ import {Account} from '../types'
 export interface AccountContextInterface {
   account?: Account
   storeAccount({
-    accountDetails,
-    token,
+    accountDetails
   }: {
     accountDetails: Account
-    token: string
   }): void
-  isUserLoggedIn(): Promise<boolean>
+  isUserLoggedIn(): boolean,
+  logout(): void
 }
 
 interface ProviderProps {
@@ -37,7 +36,7 @@ export const AccountContextProvider = (props: ProviderProps): JSX.Element => {
     firstName: '',
     lastName: '',
     email: '',
-    password: '',
+    token: ''
   })
   const {children} = props
 
@@ -49,24 +48,31 @@ export const AccountContextProvider = (props: ProviderProps): JSX.Element => {
 
   const storeAccount = ({
     accountDetails,
-    token,
   }: {
     accountDetails: Account
-    token: string
   }): void => {
-    AsyncStorage.setItem('token', token)
     AsyncStorage.setItem('account', JSON.stringify(accountDetails))
     setAccount({
       firstName: accountDetails.firstName,
       lastName: accountDetails.lastName,
       email: accountDetails.email,
-      password: '',
+      token: accountDetails.token
     })
   }
 
-  const isUserLoggedIn = async (): Promise<boolean> => {
-    const token = await AsyncStorage.getItem('token')
+  const isUserLoggedIn = (): boolean => {
+    const token = account.token
     return !!token
+  }
+
+  const logout = (): void => {
+    AsyncStorage.removeItem('account')
+    setAccount({
+      firstName: '',
+      lastName: '',
+      email: '',
+      token: ''
+    })
   }
 
   return (
@@ -75,6 +81,7 @@ export const AccountContextProvider = (props: ProviderProps): JSX.Element => {
         account,
         storeAccount,
         isUserLoggedIn,
+        logout
       }}>
       {children}
     </AccountContext.Provider>

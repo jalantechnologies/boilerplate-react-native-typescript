@@ -5,6 +5,7 @@ import axios, {
   AxiosError,
 } from 'axios'
 import * as _ from 'lodash'
+import Config from "react-native-config"
 
 import {APIService} from './api.service'
 
@@ -12,7 +13,7 @@ export class APIServiceImpl implements APIService {
   service: AxiosInstance
   constructor() {
     this.service = axios.create({
-      baseURL: 'Config.apiEndpoint',
+      baseURL: Config.API_URL,
     })
     this.service.interceptors.request.use(
       (request): AxiosRequestConfig => {

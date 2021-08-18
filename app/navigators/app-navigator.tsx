@@ -1,19 +1,18 @@
-import React, {useContext} from 'react'
-import {useColorScheme} from 'react-native'
+import React, { useContext } from 'react'
+import { useColorScheme } from 'react-native'
 import {
   NavigationContainer,
   DefaultTheme,
   DarkTheme,
 } from '@react-navigation/native'
-import {createNativeStackNavigator} from '@react-navigation/native-stack'
-import {WelcomeScreen, DemoScreen} from '../screens'
-import {navigationRef} from './navigation-utilities'
-import {NavigatorParamList} from './stack-param-list'
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
+import { WelcomeScreen, DemoScreen } from '../screens'
+import { navigationRef } from './navigation-utilities'
+import { NavigatorParamList } from './stack-param-list'
 import {
   AccountContext,
-  AccountContextProvider,
 } from '../contexts/account-context'
-import {AuthStackNavigator} from './auth-stack-navigator'
+import { AuthStackNavigator } from './auth-stack-navigator'
 
 // Documentation: https://reactnavigation.org/docs/stack-navigator/
 const Stack = createNativeStackNavigator<NavigatorParamList>()
@@ -35,10 +34,10 @@ type NavigationProps = Partial<React.ComponentProps<typeof NavigationContainer>>
 
 export const AppNavigator = (props: NavigationProps) => {
   const colorScheme = useColorScheme()
-  const accountContext = useContext(AccountContext)
+  const { isUserLoggedIn } = useContext(AccountContext)
 
   function renderScreens() {
-    return accountContext && accountContext.isUserLoggedIn() ? (
+    return isUserLoggedIn() ? (
       <AppStack />
     ) : (
       <AuthStackNavigator />
@@ -46,14 +45,12 @@ export const AppNavigator = (props: NavigationProps) => {
   }
 
   return (
-    <AccountContextProvider>
-      <NavigationContainer
-        ref={navigationRef}
-        theme={colorScheme === 'dark' ? DarkTheme : DefaultTheme}
-        {...props}>
-        {renderScreens()}
-      </NavigationContainer>
-    </AccountContextProvider>
+    <NavigationContainer
+      ref={navigationRef}
+      theme={colorScheme === 'dark' ? DarkTheme : DefaultTheme}
+      {...props}>
+      {renderScreens()}
+    </NavigationContainer>
   )
 }
 
