@@ -4,7 +4,7 @@ import { styles } from './style'
 import { StackScreenProps } from '@react-navigation/stack';
 import { AuthStackParamList } from '../../navigators';
 import { View } from 'react-native';
-import { Button, Header, Text, TextField } from '../../components';
+import { Button, Header, TextField } from '../../components';
 import { Formik } from 'formik';
 
 import { Error } from '../../components/error/error';
@@ -17,7 +17,7 @@ export const LoginScreen: FC<StackScreenProps<AuthStackParamList, "login">> = ({
   return (
     <View style={styles.container}>
       <Header
-        headerTx="demoListScreen.title"
+        headerTx="loginScreen.title"
         style={styles.title} />
 
       <Formik
@@ -58,14 +58,14 @@ export const LoginScreen: FC<StackScreenProps<AuthStackParamList, "login">> = ({
             <Error error={errors.password} />
             <Button
               style={styles.loginButton}
-              tx="demoScreen.demoList"
+              tx="loginScreen.loginButton"
               onPress={handleSubmit}
             />
           </View>)}
       </Formik>
 
       <Button
-        text={'Have u an account? Create one'}
+        tx={'loginScreen.createAccountText'}
         onPress={() => {
           navigation.navigate('register');
         }}

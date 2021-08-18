@@ -8,18 +8,8 @@ import { View } from 'react-native';
 import { Button, Header, TextField } from '../../components';
 import { Error } from '../../components/error/error';
 import { Loader } from '../../components/loader/loader';
-import * as yup from 'yup';
 import { Formik } from 'formik';
-
-const reviewRegisterSchema = yup.object({
-  email: yup.string()
-    .required()
-    .email()
-    .min(4),
-  password: yup.string()
-    .required()
-    .min(8),
-});
+import { validateRegisterSchema } from '../../utils/validator';
 
 export const RegisterScreen: FC<StackScreenProps<AuthStackParamList, "register">> = ({ navigation }) => {
   const [loading, setLoading] = React.useState(false);
@@ -33,10 +23,12 @@ export const RegisterScreen: FC<StackScreenProps<AuthStackParamList, "register">
           navigation.pop();
         }}
       />
-      <Header style={styles.title}/>
+      <Header 
+        headerTx={'registerScreen.title'}
+        style={styles.title}/>
       <Formik
         initialValues={{ email: '', password: '' }}
-        validationSchema={reviewRegisterSchema}
+        validationSchema={validateRegisterSchema}
         onSubmit={async (values: { email: string, password: string }, actions: { resetForm: () => void; }) => {
           actions.resetForm();
           try {
@@ -69,9 +61,9 @@ export const RegisterScreen: FC<StackScreenProps<AuthStackParamList, "register">
               onChangeText={handleChange('password')}
             />
       <Error error={errors.email} />
-      <Error error={errors.email} />
+      <Error error={errors.password} />
       <Button
-        text={'Register'}
+        tx={'registerScreen.registerButton'}
         style={styles.loginButton}
         onPress={handleSubmit}
       />

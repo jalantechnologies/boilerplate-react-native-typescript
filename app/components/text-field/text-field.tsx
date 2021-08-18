@@ -3,25 +3,8 @@ import { StyleProp, TextInput, TextInputProps, TextStyle, View, ViewStyle } from
 import { color, spacing, typography } from "../../theme"
 import { translate, TxKeyPath } from "../../i18n"
 import { Text } from "../text/text"
+import { CONTAINER, INPUT, PRESETS } from "./text-field.style"
 
-// the base styling for the container
-const CONTAINER: ViewStyle = {
-  paddingVertical: spacing[3],
-}
-
-// the base styling for the TextInput
-const INPUT: TextStyle = {
-  fontFamily: typography.primary,
-  color: color.text,
-  minHeight: 44,
-  fontSize: 18,
-  backgroundColor: color.palette.white,
-}
-
-// currently we have no presets, but that changes quickly when you build your app.
-const PRESETS: { [name: string]: ViewStyle } = {
-  default: {},
-}
 
 export interface TextFieldProps extends TextInputProps {
   /**
