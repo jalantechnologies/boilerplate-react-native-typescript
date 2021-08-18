@@ -1,4 +1,5 @@
-export * from "./welcome/welcome-screen"
-export * from "./demo/demo-screen"
-export * from "./demo/demo-list-screen"
+export * from './welcome/welcome-screen'
+export * from './demo'
+export * from './login'
+export * from './register'
 // export other screens here
