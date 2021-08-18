@@ -1,11 +1,11 @@
-import i18n from "i18n-js"
-import en from '../../assets/local/en.json';
-import ja from '../../assets/local/ja.json';
+import i18n from 'i18n-js'
+import en from '../../assets/local/en.json'
+import ja from '../../assets/local/ja.json'
 
 i18n.fallbacks = true
-i18n.translations = { en, ja }
+i18n.translations = {en, ja}
 
-i18n.locale = "en"
+i18n.locale = 'en'
 
 /**
  * Builds up valid keypaths for translations.

@@ -1,3 +1,3 @@
-export {default as AuthServiceImpl} from './auth/auth.service.impl';
+export {default as AuthServiceImpl} from './auth/auth.service.impl'
 
-export {AuthService} from './auth/auth.service';
+export {AuthService} from './auth/auth.service'

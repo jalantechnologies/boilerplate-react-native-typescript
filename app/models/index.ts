@@ -1,1 +1,1 @@
-export { AccessToken } from './accesstoken.model';
+export {AccessToken} from './accesstoken.model'

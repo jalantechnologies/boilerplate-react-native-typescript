@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/camelcase */
 export const Images = {
   ADAPTIVE_ICON: require('./adaptive-icon.png'),
   BACKGROUND: require('./bg.png'),
@@ -10,8 +9,8 @@ export const Images = {
 }
 
 export const Icons = {
-  back: require("./arrow-left.png"),
-  bullet: require("./bullet.png"),
+  back: require('./arrow-left.png'),
+  bullet: require('./bullet.png'),
 }
 
 export type IconTypes = keyof typeof Icons

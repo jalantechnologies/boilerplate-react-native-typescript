@@ -1,14 +1,18 @@
-import React, { useState, ReactNode } from 'react'
+import React, {useState, ReactNode} from 'react'
 
 import AsyncStorage from '@react-native-community/async-storage'
 
-import {
-  Account,
-} from '../types'
+import {Account} from '../types'
 
 export interface AccountContextInterface {
   account?: Account
-  storeAccount({ accountDetails, token }: { accountDetails: Account, token: string }): void
+  storeAccount({
+    accountDetails,
+    token,
+  }: {
+    accountDetails: Account
+    token: string
+  }): void
   isUserLoggedIn(): Promise<boolean>
 }
 
@@ -16,13 +20,16 @@ interface ProviderProps {
   children: ReactNode
 }
 
-export const AccountContext = React.createContext<AccountContextInterface>(undefined)
+export const AccountContext = React.createContext<AccountContextInterface>(
+  undefined,
+)
 
 export const AccountContextProvider = (props: ProviderProps): JSX.Element => {
-
   React.useEffect(() => {
-    AsyncStorage.getItem('account').then((value) => {
-      if (value) setAccount(JSON.parse(value))
+    AsyncStorage.getItem('account').then(value => {
+      if (value) {
+        setAccount(JSON.parse(value))
+      }
     })
   }, [])
 
@@ -30,9 +37,9 @@ export const AccountContextProvider = (props: ProviderProps): JSX.Element => {
     firstName: '',
     lastName: '',
     email: '',
-    password: ''
+    password: '',
   })
-  const { children } = props
+  const {children} = props
 
   /**
    * @description Function to store account information to AsyncStorage.
@@ -40,14 +47,20 @@ export const AccountContextProvider = (props: ProviderProps): JSX.Element => {
    * @returns {void}
    */
 
-  const storeAccount = ({ accountDetails, token }: { accountDetails: Account, token: string }): void => {
+  const storeAccount = ({
+    accountDetails,
+    token,
+  }: {
+    accountDetails: Account
+    token: string
+  }): void => {
     AsyncStorage.setItem('token', token)
     AsyncStorage.setItem('account', JSON.stringify(accountDetails))
     setAccount({
       firstName: accountDetails.firstName,
       lastName: accountDetails.lastName,
       email: accountDetails.email,
-      password: ''
+      password: '',
     })
   }
 

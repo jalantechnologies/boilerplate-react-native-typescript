@@ -1,4 +1,3 @@
-
 /**
  * This type allows TypeScript to know what routes are defined in this navigator
  * as well as what properties (if any) they might take when navigating to them.
@@ -7,13 +6,13 @@
  *   https://reactnavigation.org/docs/params/
  *   https://reactnavigation.org/docs/typescript#type-checking-the-navigator
  */
- export type NavigatorParamList = {
+export type NavigatorParamList = {
   welcome: undefined
   demo: undefined
   demoList: undefined
 }
 
 export type AuthStackParamList = {
-  login: undefined,
+  login: undefined
   register: undefined
 }

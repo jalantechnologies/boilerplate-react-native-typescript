@@ -1,15 +1,15 @@
-import * as React from "react"
-import { View, ImageStyle } from "react-native"
-import { AutoImage as Image } from "../auto-image"
-import { IconProps } from "./props"
-import { Icons } from "@assets"
+import * as React from 'react'
+import {View, ImageStyle} from 'react-native'
+import {AutoImage as Image} from '../auto-image'
+import {IconProps} from './props'
+import {Icons} from '@assets'
 
 const ROOT: ImageStyle = {
-  resizeMode: "contain",
+  resizeMode: 'contain',
 }
 
 export function Icon(props: IconProps) {
-  const { style: styleOverride, icon, containerStyle } = props
+  const {style: styleOverride, icon, containerStyle} = props
 
   return (
     <View style={containerStyle}>

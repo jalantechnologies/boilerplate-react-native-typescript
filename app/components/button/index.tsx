@@ -1,8 +1,8 @@
-import * as React from "react"
-import { TouchableOpacity } from "react-native"
-import { Text } from "../text"
-import { viewPresets, textPresets } from "./presets"
-import { ButtonProps } from "./props"
+import * as React from 'react'
+import {TouchableOpacity} from 'react-native'
+import {Text} from '../text'
+import {viewPresets, textPresets} from './presets'
+import {ButtonProps} from './props'
 
 /**
  * For your text displaying needs.
@@ -12,7 +12,7 @@ import { ButtonProps } from "./props"
 export function Button(props: ButtonProps) {
   // grab the props
   const {
-    preset = "primary",
+    preset = 'primary',
     tx,
     text,
     style: styleOverride,

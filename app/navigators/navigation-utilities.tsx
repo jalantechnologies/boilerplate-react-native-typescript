@@ -1,21 +1,25 @@
-import { useState, useEffect, useRef } from "react"
-import { BackHandler } from "react-native"
+import {useState, useEffect, useRef} from 'react'
+import {BackHandler} from 'react-native'
 import {
   PartialState,
   NavigationState,
   createNavigationContainerRef,
-} from "@react-navigation/native"
+} from '@react-navigation/native'
 
 export const navigationRef = createNavigationContainerRef()
 
 /**
  * Gets the current screen from any navigation state.
  */
-export function getActiveRouteName(state: NavigationState | PartialState<NavigationState>) {
+export function getActiveRouteName(
+  state: NavigationState | PartialState<NavigationState>,
+) {
   const route = state.routes[state.index]
 
   // Found the active route -- return the name
-  if (!route.state) return route.name
+  if (!route.state) {
+    return route.name
+  }
 
   // Recursive call to deal with nested routers
   return getActiveRouteName(route.state)
@@ -58,10 +62,11 @@ export function useBackButtonHandler(canExit: (routeName: string) => boolean) {
     }
 
     // Subscribe when we come to life
-    BackHandler.addEventListener("hardwareBackPress", onBackPress)
+    BackHandler.addEventListener('hardwareBackPress', onBackPress)
 
     // Unsubscribe when we're done
-    return () => BackHandler.removeEventListener("hardwareBackPress", onBackPress)
+    return () =>
+      BackHandler.removeEventListener('hardwareBackPress', onBackPress)
   }, [])
 }
 
@@ -97,17 +102,26 @@ export function useNavigationPersistence(storage: any, persistenceKey: string) {
   const restoreState = async () => {
     try {
       const state = await storage.load(persistenceKey)
-      if (state) setInitialNavigationState(state)
+      if (state) {
+        setInitialNavigationState(state)
+      }
     } finally {
       setIsRestored(true)
     }
   }
 
   useEffect(() => {
-    if (!isRestored) restoreState()
+    if (!isRestored) {
+      restoreState()
+    }
   }, [isRestored])
 
-  return { onNavigationStateChange, restoreState, isRestored, initialNavigationState }
+  return {
+    onNavigationStateChange,
+    restoreState,
+    isRestored,
+    initialNavigationState,
+  }
 }
 
 /**
@@ -127,7 +141,7 @@ export function goBack() {
   }
 }
 
-export function resetRoot(params = { index: 0, routes: [] }) {
+export function resetRoot(params = {index: 0, routes: []}) {
   if (navigationRef.isReady()) {
     navigationRef.resetRoot(params)
   }

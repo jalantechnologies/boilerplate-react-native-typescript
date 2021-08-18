@@ -1,11 +1,11 @@
-import React from 'react';
-import { View, ActivityIndicator, Text } from 'react-native';
-import { LoaderProps } from './props';
-import { styles } from './style';
+import React from 'react'
+import {View, ActivityIndicator, Text} from 'react-native'
+import {LoaderProps} from './props'
+import {styles} from './style'
 
-export const Loader = ({ loading }: LoaderProps) => {
+export const Loader = ({loading}: LoaderProps) => {
   if (!loading) {
-    return <View />;
+    return <View />
   }
 
   return (
@@ -15,5 +15,5 @@ export const Loader = ({ loading }: LoaderProps) => {
         <Text style={styles.text}>Loading...</Text>
       </View>
     </View>
-  );
+  )
 }

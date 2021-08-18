@@ -1,7 +1,7 @@
-import * as React from "react"
-import { View } from "react-native"
-import { PRESETS } from "./presets"
-import { FormRowProps } from "./props"
+import * as React from 'react'
+import {View} from 'react-native'
+import {PRESETS} from './presets'
+import {FormRowProps} from './props'
 
 /**
  * A horizontal container component used to hold a row of a form.

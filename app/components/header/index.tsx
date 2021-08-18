@@ -1,11 +1,11 @@
-import React from "react"
-import { View, ViewStyle, TextStyle } from "react-native"
-import { HeaderProps } from "./props"
-import { Button } from "../button"
-import { Text } from "../text"
-import { Icon } from "../icon"
-import { translate } from "../../i18n"
-import { LEFT, RIGHT, ROOT, TITLE, TITLE_MIDDLE } from "./style"
+import React from 'react'
+import {View} from 'react-native'
+import {HeaderProps} from './props'
+import {Button} from '../button'
+import {Text} from '../text'
+import {Icon} from '../icon'
+import {translate} from '../../i18n'
+import {LEFT, RIGHT, ROOT, TITLE, TITLE_MIDDLE} from './style'
 
 /**
  * Header that appears on many screens. Will hold navigation buttons and screen title.
@@ -21,7 +21,7 @@ export function Header(props: HeaderProps) {
     style,
     titleStyle,
   } = props
-  const header = headerText || (headerTx && translate(headerTx)) || ""
+  const header = headerText || (headerTx && translate(headerTx)) || ''
 
   return (
     <View style={[ROOT, style]}>
