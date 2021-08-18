@@ -4,7 +4,7 @@ export const Images = {
   FAVICON: require('./favicon.png'),
   HEART: require('./heart.png'),
   ICON: require('./icon.png'),
-  LOGO: require('./logo.png'),
+  LOGO: require('./logo.jpeg'),
   SPLASH: require('./splash.png'),
 }
 

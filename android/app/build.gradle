@@ -182,21 +182,21 @@ android {
     productFlavors {
         development{
             minSdkVersion rootProject.ext.minSdkVersion
-            applicationId 'com.reactnativeboilerplate.development'
+            applicationId 'com.reactnativeboilerplatejtc.development'
             targetSdkVersion rootProject.ext.targetSdkVersion
-            resValue "string", "build_config_package", "com.reactnativeboilerplate"
+            resValue "string", "build_config_package", "com.reactnativeboilerplatejtc"
         }
         production {
             minSdkVersion rootProject.ext.minSdkVersion
-            applicationId 'com.reactnativeboilerplate'
+            applicationId 'com.reactnativeboilerplatejtc'
             targetSdkVersion rootProject.ext.targetSdkVersion
-            resValue "string", "build_config_package", "com.reactnativeboilerplate"
+            resValue "string", "build_config_package", "com.reactnativeboilerplatejtc"
         }
         staging {
             minSdkVersion rootProject.ext.minSdkVersion
-            applicationId 'com.reactnativeboilerplate.staging'
+            applicationId 'com.reactnativeboilerplatejtc.staging'
             targetSdkVersion rootProject.ext.targetSdkVersion
-            resValue "string", "build_config_package", "com.reactnativeboilerplate"
+            resValue "string", "build_config_package", "com.reactnativeboilerplatejtc"
         }
     }
 

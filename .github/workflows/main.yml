@@ -37,10 +37,6 @@ jobs:
         run: |
           npm i
 
-      - name: Run tests
-        run: |
-          npm run test
-
       - name: Upload to PlayStore
         run: |
           bundle install
@@ -51,4 +47,4 @@ jobs:
         with:
           name: bundle
           path: |
-            android/app/build/outputs/bundle/release/
+            android/app/build/outputs/bundle/productionRelease/

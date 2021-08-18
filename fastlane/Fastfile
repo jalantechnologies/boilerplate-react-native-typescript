@@ -66,10 +66,10 @@ platform :android do
     )
 
 		# Upload Android App Bundle to PlayStore like Internal testing Release
-    upload_to_play_store(
-      track: 'internal',
-      skip_upload_apk: true,
-      version_name: package["version"]
-    )
+    # upload_to_play_store(
+    #   track: 'internal',
+    #   skip_upload_apk: true,
+    #   version_name: package["version"]
+    # )
   end
 end
