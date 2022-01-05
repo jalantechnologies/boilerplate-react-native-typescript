@@ -1,14 +1,7 @@
 import React, {FC} from 'react'
-import {View} from 'react-native'
+import {Image, View} from 'react-native'
 import {StackScreenProps} from '@react-navigation/stack'
-import {
-  BulletItem,
-  Button,
-  Header,
-  Text,
-  Screen,
-  AutoImage as Image,
-} from '@components'
+import {Button, Header, Text, Screen} from '@components'
 import {NavigatorParamList} from '@navigators'
 import {color} from '@theme'
 import {Images} from '@assets'
@@ -19,7 +12,6 @@ import {
   HEADER_TITLE,
   TITLE,
   TAGLINE,
-  platformCommand,
   DEMO,
   DEMO_TEXT,
   LOGO,
@@ -45,10 +37,6 @@ export const DemoScreen: FC<StackScreenProps<NavigatorParamList, 'demo'>> = ({
         />
         <Text style={TITLE} preset="header" tx="demoScreen.title" />
         <Text style={TAGLINE} tx="demoScreen.tagLine" />
-        <BulletItem text="Integrated here, Navigation with State, TypeScript, Storybook, Solidarity, and i18n." />
-        <BulletItem
-          text={`To run Storybook, press ${platformCommand} or shake the device to show the developer menu, then select "Toggle Storybook"`}
-        />
         <Button style={DEMO} textStyle={DEMO_TEXT} tx="demoScreen.demoList" />
         <Image source={Images.LOGO} style={LOGO} />
       </Screen>

@@ -22,10 +22,6 @@
   "demoListScreen": {
     "title": "Demo List"
   },
-  "storybook": {
-    "placeholder": "Placeholder",
-    "field": "Field"
-  },
   "loginScreen": {
     "loginButton": "Log in",
     "createAccountText": "Have u an account? Create one",

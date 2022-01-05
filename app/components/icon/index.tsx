@@ -1,6 +1,5 @@
 import * as React from 'react'
-import {View, ImageStyle} from 'react-native'
-import {AutoImage as Image} from '../auto-image'
+import {View, ImageStyle, Image} from 'react-native'
 import {IconProps} from './props'
 import {Icons} from '@assets'
 

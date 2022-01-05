@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, {useContext} from 'react'
 
 import {styles} from './style'
 import {FC} from 'react'
@@ -11,18 +11,18 @@ import {Loader} from '@components'
 import {Formik} from 'formik'
 import {validateRegisterSchema} from '@utils'
 import DIContext from '../../contexts/dependencies.context'
-import { AccountContext } from '../../contexts'
+import {AccountContext} from '../../contexts'
 
 export const RegisterScreen: FC<
   StackScreenProps<AuthStackParamList, 'register'>
 > = ({navigation}) => {
   const [loading, setLoading] = React.useState(false)
 
-  const { storeAccount } = useContext(AccountContext)
+  const {storeAccount} = useContext(AccountContext)
 
-  const dependencies = React.useContext(DIContext);
+  const dependencies = React.useContext(DIContext)
 
-  const { authService } = dependencies;
+  const {authService} = dependencies
 
   return (
     <View style={styles.container}>
@@ -38,14 +38,24 @@ export const RegisterScreen: FC<
         initialValues={{email: '', password: '', firstName: '', lastName: ''}}
         validationSchema={validateRegisterSchema}
         onSubmit={async (
-          values: {email: string; password: string; firstName: string; lastName: string},
+          values: {
+            email: string
+            password: string
+            firstName: string
+            lastName: string
+          },
           actions: {resetForm: () => void},
         ) => {
           actions.resetForm()
           try {
             setLoading(true)
-            const res = await authService.register({email:values.email, password: values.password, firstName: values.firstName, lastName: values.lastName});
-            if(res.data){
+            const res = await authService.register({
+              email: values.email,
+              password: values.password,
+              firstName: values.firstName,
+              lastName: values.lastName,
+            })
+            if (res.data) {
               storeAccount({accountDetails: res.data})
             }
             setLoading(false)

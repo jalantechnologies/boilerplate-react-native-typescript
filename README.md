@@ -1,4 +1,5 @@
 # React-native-typescript-boilerplate
+
 Typescript support React Native Boilerplate
 
 ### Future Plans
@@ -23,7 +24,7 @@ Typescript support React Native Boilerplate
 From the project root, run the following command.
 
 ```
-npm install 
+npm install
 ```
 
 Or if you prefer `yarn`:
@@ -32,7 +33,7 @@ Or if you prefer `yarn`:
 yarn
 ```
 
-#### Install cocoapods: 
+#### Install cocoapods:
 
 This installation is for iOS development.
 
@@ -41,51 +42,79 @@ cd ios && pod install
 ```
 
 #### Run android app:
-Development stage: 
+
+Development stage:
+
 ```
 npm run android
 ```
+
 ```
 yarn android
 ```
 
 Staging stage:
+
 ```
 npm run android:staging
 ```
+
 ```
 yarn android:staging
 ```
 
 Production stage:
+
 ```
 npm run android:prod
 ```
+
 ```
 yarn android:prod
 ```
 
 #### Run iOS app:
+
 Development stage:
+
 ```
 npm run ios
 ```
+
 ```
 yarn ios
 ```
 
 Staging stage:
+
 ```
 npm run ios:staging
 ```
+
 ```
 yarn ios:staging
 ```
 
 Production stage:
+
 ```
 npm run ios:prod
 ```
+
 ```
 yarn ios:prod
 ```
+
+#### Run Storybook:
+
+##### Web view
+
+```
+npm run storybook
+```
+
+Reload app on Metro
+
+##### Web view
+
+Shake device, click on "Toggle Storybook"
